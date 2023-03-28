@@ -70,6 +70,7 @@ class _SignUpFormState extends State<SignUpForm> {
 
   @override
   Widget build(BuildContext context) {
+    print("Add animation for sign in progress");
     return Form(
       onChanged: _updateFormProgress,
       child: Column(
