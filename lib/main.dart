@@ -10,6 +10,7 @@ class SignUpApp extends StatelessWidget {
     return MaterialApp(
       routes: {
         '/': (context) => const SignUpScreen(),
+        '/welcome': (context) => const WelcomeScreen(),
       },
     );
   }
@@ -20,6 +21,7 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("Shows the Welcome screen");
     print("Enable sign in progress tracking");
     return Scaffold(
       backgroundColor: Colors.grey[200],
@@ -30,6 +32,20 @@ class SignUpScreen extends StatelessWidget {
             child: SignUpForm(),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class WelcomeScreen extends StatelessWidget {
+  const WelcomeScreen();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child:
+            Text('Welcome!', style: Theme.of(context).textTheme.displayMedium),
       ),
     );
   }
@@ -48,6 +64,10 @@ class _SignUpFormState extends State<SignUpForm> {
   final _usernameTextController = TextEditingController();
 
   double _formProgress = 0;
+
+  void _showWelcomeScreen() {
+    Navigator.of(context).pushNamed('/welcome');
+  }
 
   void _updateFormProgress() {
     var progress = 0.0;
@@ -70,7 +90,11 @@ class _SignUpFormState extends State<SignUpForm> {
 
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
     print("Add animation for sign in progress");
+=======
+    print("sample after all branch changes");
+>>>>>>> master
     return Form(
       onChanged: _updateFormProgress,
       child: Column(
