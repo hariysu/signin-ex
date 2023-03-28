@@ -22,6 +22,7 @@ class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print("Shows the Welcome screen");
+    print("Enable sign in progress tracking");
     return Scaffold(
       backgroundColor: Colors.grey[200],
       body: const Center(
@@ -68,9 +69,30 @@ class _SignUpFormState extends State<SignUpForm> {
     Navigator.of(context).pushNamed('/welcome');
   }
 
+  void _updateFormProgress() {
+    var progress = 0.0;
+    final controllers = [
+      _firstNameTextController,
+      _lastNameTextController,
+      _usernameTextController
+    ];
+
+    for (final controller in controllers) {
+      if (controller.value.text.isNotEmpty) {
+        progress += 1 / controllers.length;
+      }
+    }
+
+    setState(() {
+      _formProgress = progress;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    print("sample after all branch changes");
     return Form(
+      onChanged: _updateFormProgress,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -112,7 +134,7 @@ class _SignUpFormState extends State<SignUpForm> {
                     : Colors.blue;
               }),
             ),
-            onPressed: _showWelcomeScreen,
+            onPressed: _formProgress == 1 ? _showWelcomeScreen : null,
             child: const Text('Sign up'),
           ),
         ],
