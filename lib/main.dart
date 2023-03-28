@@ -20,6 +20,7 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("Enable sign in progress tracking");
     return Scaffold(
       backgroundColor: Colors.grey[200],
       body: const Center(
@@ -112,7 +113,7 @@ class _SignUpFormState extends State<SignUpForm> {
                     : Colors.blue;
               }),
             ),
-            onPressed: null,
+            onPressed: _formProgress == 1 ? _showWelcomeScreen : null,
             child: const Text('Sign up'),
           ),
         ],
