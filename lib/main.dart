@@ -70,6 +70,7 @@ class _SignUpFormState extends State<SignUpForm> {
 
   @override
   Widget build(BuildContext context) {
+    print("sample after all branch changes");
     return Form(
       onChanged: _updateFormProgress,
       child: Column(
